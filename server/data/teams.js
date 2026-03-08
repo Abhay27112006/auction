@@ -2,7 +2,7 @@ export function getTeams() {
     return [
         {
             name: 'Chennai',
-            shortName: 'CSK',
+            shortName: 'CK',
             primaryColor: '#FCCA06',
             secondaryColor: '#0081E9',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/CSK.png',
@@ -17,7 +17,7 @@ export function getTeams() {
         },
         {
             name: 'Mumbai',
-            shortName: 'MI',
+            shortName: 'MUM',
             primaryColor: '#004BA0',
             secondaryColor: '#D1AB3E',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/MI.png',
@@ -32,7 +32,7 @@ export function getTeams() {
         },
         {
             name: 'Bengaluru',
-            shortName: 'RCB',
+            shortName: 'BR',
             primaryColor: '#EC1C24',
             secondaryColor: '#2B2A29',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/RCB.png',
@@ -47,7 +47,7 @@ export function getTeams() {
         },
         {
             name: 'Kolkata',
-            shortName: 'KKR',
+            shortName: 'KOL',
             primaryColor: '#3A225D',
             secondaryColor: '#B3A123',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/KKR.png',
@@ -63,7 +63,7 @@ export function getTeams() {
         },
         {
             name: 'Delhi',
-            shortName: 'DC',
+            shortName: 'DEL',
             primaryColor: '#004C93',
             secondaryColor: '#EF1B23',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/DC.png',
@@ -73,11 +73,12 @@ export function getTeams() {
                 { name: 'Kuldeep Yadav', specialism: 'BOWLER', country: 'India', retained: true },
                 { name: 'Tristan Stubbs', specialism: 'BATTER', country: 'South Africa', retained: true },
                 { name: 'Abhishek Porel', specialism: 'WICKETKEEPER', country: 'India', retained: true },
+                { name: 'KL Rahul', specialism: 'WICKETKEEPER', country: 'India', retained: true },
             ]
         },
         {
             name: 'Punjab',
-            shortName: 'PBKS',
+            shortName: 'PUN',
             primaryColor: '#ED1B24',
             secondaryColor: '#A7A9AC',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/PBKS.png',
@@ -92,7 +93,7 @@ export function getTeams() {
         },
         {
             name: 'Rajasthan',
-            shortName: 'RR',
+            shortName: 'RAJ',
             primaryColor: '#EA1A85',
             secondaryColor: '#254AA5',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/RR.png',
@@ -108,7 +109,7 @@ export function getTeams() {
         },
         {
             name: 'Hyderabad',
-            shortName: 'SRH',
+            shortName: 'HYD',
             primaryColor: '#FF822A',
             secondaryColor: '#F7CD00',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/SRH.png',
@@ -123,7 +124,7 @@ export function getTeams() {
         },
         {
             name: 'Lucknow',
-            shortName: 'LSG',
+            shortName: 'LUC',
             primaryColor: '#A72056',
             secondaryColor: '#FFCC00',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/LSG.png',
@@ -138,7 +139,7 @@ export function getTeams() {
         },
         {
             name: 'Gujarat',
-            shortName: 'GT',
+            shortName: 'GUJ',
             primaryColor: '#A0E4EA',
             secondaryColor: '#1C1C1C',
             logo: 'https://scores.iplt20.com/ipl/teamlogos/GT.png',
