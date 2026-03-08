@@ -1,7 +1,7 @@
 export function getTeams() {
     return [
         {
-            name: 'Chennai Super Kings',
+            name: 'Chennai Kings',
             shortName: 'CSK',
             primaryColor: '#FCCA06',
             secondaryColor: '#0081E9',
@@ -16,7 +16,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Mumbai Indians',
+            name: 'Mumbai Force',
             shortName: 'MI',
             primaryColor: '#004BA0',
             secondaryColor: '#D1AB3E',
@@ -31,7 +31,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Royal Challengers Bengaluru',
+            name: 'Bengaluru Challengers',
             shortName: 'RCB',
             primaryColor: '#EC1C24',
             secondaryColor: '#2B2A29',
@@ -46,7 +46,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Kolkata Knight Riders',
+            name: 'Kolkata Knights',
             shortName: 'KKR',
             primaryColor: '#3A225D',
             secondaryColor: '#B3A123',
@@ -62,7 +62,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Delhi Capitals',
+            name: 'Delhi Defenders',
             shortName: 'DC',
             primaryColor: '#004C93',
             secondaryColor: '#EF1B23',
@@ -76,7 +76,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Punjab Kings',
+            name: 'Punjab Warriors',
             shortName: 'PBKS',
             primaryColor: '#ED1B24',
             secondaryColor: '#A7A9AC',
@@ -91,7 +91,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Rajasthan Royals',
+            name: 'Rajasthan Rangers',
             shortName: 'RR',
             primaryColor: '#EA1A85',
             secondaryColor: '#254AA5',
@@ -107,7 +107,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Sunrisers Hyderabad',
+            name: 'Hyderabad Blazers',
             shortName: 'SRH',
             primaryColor: '#FF822A',
             secondaryColor: '#F7CD00',
@@ -122,7 +122,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Lucknow Super Giants',
+            name: 'Lucknow Legends',
             shortName: 'LSG',
             primaryColor: '#A72056',
             secondaryColor: '#FFCC00',
@@ -137,7 +137,7 @@ export function getTeams() {
             ]
         },
         {
-            name: 'Gujarat Titans',
+            name: 'Gujarat Gladiators',
             shortName: 'GT',
             primaryColor: '#A0E4EA',
             secondaryColor: '#1C1C1C',

@@ -37,8 +37,10 @@ export function AuctionProvider({ children }) {
 
     useEffect(() => {
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const url = isLocal ? 'http://localhost:5000' : window.location.origin;
-        const s = io(url, { transports: ['websocket', 'polling'] });
+        // Use environment variable if provided (for production), otherwise fallback
+        const backendUrl = import.meta.env.VITE_BACKEND_URL || (isLocal ? 'http://localhost:5000' : window.location.origin);
+
+        const s = io(backendUrl, { transports: ['websocket', 'polling'] });
 
         socketRef.current = s;
         setSocket(s);

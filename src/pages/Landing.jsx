@@ -123,19 +123,16 @@ export default function Landing() {
             <div className="flex-1 relative z-10 flex items-center justify-center px-6 py-8">
                 <AnimatePresence mode="wait">
                     {step === 'home' && (
-                        <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} className="w-full max-w-4xl">
+                        <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} className="w-full max-w-4xl flex flex-col items-center">
                             {/* Hero */}
-                            <div className="text-center mb-10">
+                            <div className="text-center mb-10 w-full">
                                 <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-black gradient-text mb-2 leading-tight">
                                     CRICKET AUCTION
                                 </h1>
-                                <p className="text-white/30 max-w-md mx-auto">
-                                    350+ real players. 10 franchises. Build your dream squad, bid against AI or friends.
-                                </p>
                             </div>
 
                             {/* Action cards */}
-                            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 max-w-2xl mx-auto mb-12">
+                            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 w-full mb-12">
                                 <button onClick={() => setStep('create')}
                                     className="group w-full sm:w-[260px] p-6 rounded-2xl border border-ipl-gold/20 bg-ipl-gold/[0.04] hover:bg-ipl-gold/[0.08] hover:border-ipl-gold/40 transition-all flex flex-col items-center justify-center text-center"
                                 >
