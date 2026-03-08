@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { io } from 'socket.io-client';
+import { getTeams } from '../../server/data/teams';
+import { getAllPlayers } from '../../server/data/players';
 
 const AuctionContext = createContext(null);
 
@@ -32,8 +34,8 @@ export function AuctionProvider({ children }) {
     const [auctionHistory, setAuctionHistory] = useState([]);
     const [connectedUsers, setConnectedUsers] = useState([]);
     const [error, setError] = useState(null);
-    const [allPlayers, setAllPlayers] = useState([]);
-    const [allTeamsData, setAllTeamsData] = useState([]);
+    const [allPlayers, setAllPlayers] = useState(getAllPlayers());
+    const [allTeamsData, setAllTeamsData] = useState(getTeams());
 
     useEffect(() => {
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -136,9 +138,7 @@ export function AuctionProvider({ children }) {
             setTimeout(() => setError(null), 5000);
         });
 
-        // Fetch static data
-        fetch(`${backendUrl}/api/players`).then(r => r.json()).then(setAllPlayers).catch(() => { });
-        fetch(`${backendUrl}/api/teams`).then(r => r.json()).then(setAllTeamsData).catch(() => { });
+        // Static data is now imported directly
 
         return () => s.disconnect();
     }, []);
