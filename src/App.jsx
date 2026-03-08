@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuctionProvider } from './context/AuctionContext';
 import { AnimatePresence } from 'framer-motion';
 import Landing from './pages/Landing';
@@ -24,6 +24,7 @@ function App() {
                             <Route path="/teams" element={<Teams />} />
                             <Route path="/players" element={<PlayerPool />} />
                             <Route path="/leaderboard" element={<Leaderboard />} />
+                            <Route path="*" element={<Navigate to="/" replace />} />
                         </Routes>
                     </AnimatePresence>
                 </div>
