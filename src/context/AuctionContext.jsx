@@ -36,7 +36,8 @@ export function AuctionProvider({ children }) {
     const [allTeamsData, setAllTeamsData] = useState([]);
 
     useEffect(() => {
-        const url = window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin;
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const url = isLocal ? 'http://localhost:5000' : window.location.origin;
         const s = io(url, { transports: ['websocket', 'polling'] });
 
         socketRef.current = s;

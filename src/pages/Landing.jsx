@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuction } from '../context/AuctionContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Zap, Users, ArrowRight, Mail, Lock, User, LogIn, UserPlus } from 'lucide-react';
+import { Trophy, Zap, Users, ArrowRight, Mail, Lock, User, LogIn, UserPlus, Info, X } from 'lucide-react';
 import { CountryFlag, TeamLogo } from '../utils/flags';
 
 export default function Landing() {
@@ -10,6 +10,7 @@ export default function Landing() {
     const { createRoom, joinRoom, allTeamsData, phase, error } = useAuction();
     const [step, setStep] = useState('home'); // home | auth | create | join
     const [authMode, setAuthMode] = useState('login'); // login | register
+    const [showAbout, setShowAbout] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -97,6 +98,9 @@ export default function Landing() {
                 </div>
                 {user ? (
                     <div className="flex items-center gap-3">
+                        <button onClick={() => setShowAbout(true)} className="text-white/50 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5">
+                            <Info size={18} />
+                        </button>
                         <div className="text-right">
                             <p className="text-white text-sm font-semibold">{user.name}</p>
                             <p className="text-white/30 text-[10px]">{user.email}</p>
@@ -104,9 +108,14 @@ export default function Landing() {
                         <button onClick={handleLogout} className="text-white/30 hover:text-white/60 text-xs transition-colors">Logout</button>
                     </div>
                 ) : (
-                    <button onClick={() => setStep('auth')} className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors border border-white/10 rounded-lg px-4 py-2 hover:bg-white/5">
-                        <LogIn size={14} /> Sign In
-                    </button>
+                    <div className="flex items-center gap-3">
+                        <button onClick={() => setShowAbout(true)} className="text-white/50 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5 cursor-pointer">
+                            <Info size={18} />
+                        </button>
+                        <button onClick={() => setStep('auth')} className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors border border-white/10 rounded-lg px-4 py-2 hover:bg-white/5 cursor-pointer">
+                            <LogIn size={14} /> Sign In
+                        </button>
+                    </div>
                 )}
             </div>
 
@@ -126,16 +135,16 @@ export default function Landing() {
                             </div>
 
                             {/* Action cards */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-12">
+                            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 max-w-2xl mx-auto mb-12">
                                 <button onClick={() => setStep('create')}
-                                    className="group p-6 rounded-2xl border border-ipl-gold/20 bg-ipl-gold/[0.04] hover:bg-ipl-gold/[0.08] hover:border-ipl-gold/40 transition-all text-left"
+                                    className="group w-full sm:w-[260px] p-6 rounded-2xl border border-ipl-gold/20 bg-ipl-gold/[0.04] hover:bg-ipl-gold/[0.08] hover:border-ipl-gold/40 transition-all flex flex-col items-center justify-center text-center"
                                 >
                                     <Zap size={28} className="text-ipl-gold mb-3" />
                                     <h3 className="font-display font-bold text-white text-lg mb-1">Create Room</h3>
                                     <p className="text-white/30 text-sm">Start a new auction session</p>
                                 </button>
                                 <button onClick={() => setStep('join')}
-                                    className="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all text-left"
+                                    className="group w-full sm:w-[260px] p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all flex flex-col items-center justify-center text-center"
                                 >
                                     <Users size={28} className="text-white/50 mb-3" />
                                     <h3 className="font-display font-bold text-white text-lg mb-1">Join Room</h3>
@@ -151,10 +160,9 @@ export default function Landing() {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.1 + i * 0.04 }}
-                                        className="w-16 h-16 rounded-xl border border-white/[0.06] bg-white/[0.02] flex flex-col items-center justify-center gap-1 hover:scale-110 transition-transform"
+                                        className="w-20 h-20 rounded-xl border border-white/[0.06] bg-white/[0.02] flex items-center justify-center hover:scale-110 transition-transform"
                                     >
-                                        <TeamLogo team={team} size={28} />
-                                        <span className="text-[8px] font-bold" style={{ color: team.primaryColor + 'aa' }}>{team.shortName}</span>
+                                        <TeamLogo team={team} size={50} />
                                     </motion.div>
                                 ))}
                             </div>
@@ -274,9 +282,9 @@ export default function Landing() {
                                                 <button
                                                     key={team.shortName}
                                                     onClick={() => setSelectedTeam(team.shortName)}
-                                                    className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-all border ${selectedTeam === team.shortName
-                                                            ? 'scale-[1.08]'
-                                                            : 'border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10'
+                                                    className={`flex items-center justify-center p-3 rounded-xl transition-all border ${selectedTeam === team.shortName
+                                                        ? 'scale-[1.08]'
+                                                        : 'border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10'
                                                         }`}
                                                     style={selectedTeam === team.shortName ? {
                                                         borderColor: `${team.primaryColor}60`,
@@ -284,10 +292,7 @@ export default function Landing() {
                                                         boxShadow: `0 0 15px ${team.primaryColor}20`
                                                     } : {}}
                                                 >
-                                                    <TeamLogo team={team} size={32} />
-                                                    <span className="text-[9px] font-bold" style={{ color: selectedTeam === team.shortName ? team.primaryColor : 'rgba(255,255,255,0.4)' }}>
-                                                        {team.shortName}
-                                                    </span>
+                                                    <TeamLogo team={team} size={48} />
                                                 </button>
                                             ))}
                                         </div>
@@ -310,6 +315,52 @@ export default function Landing() {
                     )}
                 </AnimatePresence>
             </div>
+
+            {/* About Modal */}
+            <AnimatePresence>
+                {showAbout && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+                        onClick={() => setShowAbout(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0, y: 10 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.95, opacity: 0, y: 10 }}
+                            onClick={e => e.stopPropagation()}
+                            className="w-full max-w-lg p-8 rounded-2xl border border-white/10 bg-slate-900/90 shadow-2xl relative"
+                        >
+                            <button
+                                onClick={() => setShowAbout(false)}
+                                className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors"
+                            >
+                                <X size={20} />
+                            </button>
+
+                            <h2 className="font-display text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-ipl-gold to-yellow-500 mb-4">
+                                ICL 2026 Mini Auction
+                            </h2>
+                            <p className="text-white/70 leading-relaxed mb-6">
+                                Experience the thrill of a real cricket auction right from your browser.
+                                Create a room with your friends, pick your favorite franchise, and bid on a pool of over 350+ real players.
+                                Manage your purse limits, squad sizes, and outsmart your opponents to build the ultimate dream team.
+                            </p>
+
+                            <div className="pt-6 border-t border-white/10 mt-6 text-center lg:text-left">
+                                <p className="text-white/40 text-sm flex flex-col sm:flex-row items-center gap-2 justify-center lg:justify-start">
+                                    <span>Built with passion by</span>
+                                    <span className="text-ipl-gold font-semibold text-lg drop-shadow-[0_0_10px_rgba(212,175,55,0.4)]">
+                                        N. Abhay Kashyap
+                                    </span>
+                                </p>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

@@ -44,18 +44,24 @@ export function CountryFlag({ country, size = 20 }) {
     );
 }
 
-// Team logo component with proper fallback
+// Custom team logo to avoid copyright issues
 export function TeamLogo({ team, size = 40 }) {
+    // Generate a custom SVG badge based on the team's colors and short name
+    const prim = team.primaryColor || '#FFFFFF';
+    const sec = team.secondaryColor || '#000000';
+
     return (
-        <img
-            src={team.logo}
-            alt={team.shortName}
-            style={{ width: size, height: size, objectFit: 'contain' }}
-            onError={e => {
-                e.target.onerror = null;
-                e.target.src = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><rect width="${size}" height="${size}" rx="8" fill="${team.primaryColor}22"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="${team.primaryColor}" font-family="sans-serif" font-weight="bold" font-size="${size * 0.3}">${team.shortName}</text></svg>`)}`;
-            }}
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id={`grad-${team.shortName}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor={prim} />
+                    <stop offset="100%" stopColor={sec} />
+                </linearGradient>
+            </defs>
+            <path d="M50 5 L90 20 L90 60 C90 80 60 95 50 95 C40 95 10 80 10 60 L10 20 Z" fill={`url(#grad-${team.shortName})`} stroke="rgba(255,255,255,0.2)" strokeWidth="3" />
+            <circle cx="50" cy="45" r="28" fill="rgba(0,0,0,0.3)" />
+            <text x="50" y="52" dominantBaseline="middle" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="24" letterSpacing="1">{team.shortName}</text>
+        </svg>
     );
 }
 
