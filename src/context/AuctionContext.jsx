@@ -137,8 +137,8 @@ export function AuctionProvider({ children }) {
         });
 
         // Fetch static data
-        fetch(`${url}/api/players`).then(r => r.json()).then(setAllPlayers).catch(() => { });
-        fetch(`${url}/api/teams`).then(r => r.json()).then(setAllTeamsData).catch(() => { });
+        fetch(`${backendUrl}/api/players`).then(r => r.json()).then(setAllPlayers).catch(() => { });
+        fetch(`${backendUrl}/api/teams`).then(r => r.json()).then(setAllTeamsData).catch(() => { });
 
         return () => s.disconnect();
     }, []);
