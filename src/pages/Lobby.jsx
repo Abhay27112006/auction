@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuction } from '../context/AuctionContext';
 import { motion } from 'framer-motion';
 import { Copy, Check, Users, Play, Shield, Crown } from 'lucide-react';
+import { TeamLogo } from '../utils/flags';
 
 export default function Lobby() {
     const navigate = useNavigate();
@@ -24,12 +25,9 @@ export default function Lobby() {
     const botTeams = teams.filter(t => t.isBot);
 
     return (
-        <div className="min-h-screen pt-20 px-4 pb-8">
+        <div className="min-h-screen pt-28 px-4 pb-8">
             <div className="max-w-5xl mx-auto">
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10">
-                    <h1 className="font-display text-3xl font-black gradient-text mb-2">AUCTION LOBBY</h1>
-                    <p className="text-white/40">Share the room code with friends to join</p>
-                </motion.div>
+
 
                 {/* Room Code */}
                 <motion.div
@@ -63,8 +61,7 @@ export default function Lobby() {
                     <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                         {humanTeams.map(team => (
                             <div key={team.shortName} className="glass p-4 text-center" style={{ borderColor: team.primaryColor + '60' }}>
-                                <img src={team.logo} alt={team.shortName} className="w-12 h-12 mx-auto mb-2 object-contain"
-                                    onError={e => { e.target.style.display = 'none'; }} />
+                                <div className="flex justify-center mb-2"><TeamLogo team={team} size={48} /></div>
                                 <p className="font-bold text-sm" style={{ color: team.primaryColor }}>{team.shortName}</p>
                                 <p className="text-white/50 text-xs">{team.ownerName}</p>
                                 {team.owner && team.shortName === myTeam && (
@@ -88,8 +85,7 @@ export default function Lobby() {
                     <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                         {botTeams.map(team => (
                             <div key={team.shortName} className="glass p-4 text-center opacity-60" style={{ borderColor: team.primaryColor + '30' }}>
-                                <img src={team.logo} alt={team.shortName} className="w-10 h-10 mx-auto mb-2 object-contain opacity-50"
-                                    onError={e => { e.target.style.display = 'none'; }} />
+                                <div className="flex justify-center mb-2 opacity-50"><TeamLogo team={team} size={40} /></div>
                                 <p className="font-bold text-sm" style={{ color: team.primaryColor }}>{team.shortName}</p>
                                 <p className="text-white/30 text-xs">🤖 Bot</p>
                             </div>

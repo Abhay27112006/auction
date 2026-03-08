@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuction } from '../context/AuctionContext';
 import { motion } from 'framer-motion';
 import { Trophy, TrendingUp, Wallet, Medal, Star } from 'lucide-react';
+import { TeamLogo } from '../utils/flags';
 
 function formatPrice(lakh) {
     if (lakh >= 100) return `₹${(lakh / 100).toFixed(2)} Cr`;
@@ -35,12 +36,9 @@ export default function Leaderboard() {
     const medals = ['🥇', '🥈', '🥉'];
 
     return (
-        <div className="min-h-screen pt-20 px-4 pb-8">
+        <div className="min-h-screen pt-28 px-4 pb-8">
             <div className="max-w-7xl mx-auto">
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
-                    <h1 className="font-display text-3xl font-black gradient-text mb-2">LEADERBOARD</h1>
-                    <p className="text-white/40">{auctionHistory.length} players sold so far</p>
-                </motion.div>
+
 
                 {auctionHistory.length === 0 ? (
                     <div className="glass-strong p-12 text-center max-w-md mx-auto">
@@ -100,8 +98,7 @@ export default function Leaderboard() {
                                         transition={{ delay: 0.1 + i * 0.05 }}
                                     >
                                         <div className="flex items-center gap-3 mb-1">
-                                            <img src={team.logo} alt="" className="w-8 h-8 object-contain"
-                                                onError={e => { e.target.style.display = 'none'; }} />
+                                            <TeamLogo team={team} size={32} />
                                             <span className="font-bold text-sm flex-1" style={{ color: team.primaryColor }}>{team.shortName}</span>
                                             <span className="text-white/40 text-xs">{team.count} players</span>
                                             <span className="font-display text-sm font-bold text-white">{formatPrice(team.spent)}</span>

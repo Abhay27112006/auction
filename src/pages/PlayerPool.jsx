@@ -42,12 +42,9 @@ export default function PlayerPool() {
     });
 
     return (
-        <div className="min-h-screen pt-20 px-4 pb-8">
+        <div className="min-h-screen pt-28 px-4 pb-8">
             <div className="max-w-7xl mx-auto">
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-6">
-                    <h1 className="font-display text-3xl font-black gradient-text mb-2">PLAYER POOL</h1>
-                    <p className="text-white/40">{allPlayers.length} players from the TATA IPL 2026 Auction List</p>
-                </motion.div>
+
 
                 {/* Filters */}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="glass p-4 mb-6">

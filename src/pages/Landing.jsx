@@ -134,18 +134,18 @@ export default function Landing() {
                             {/* Action cards */}
                             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 w-full mb-12">
                                 <button onClick={() => setStep('create')}
-                                    className="group w-full sm:w-[260px] p-6 rounded-2xl border border-ipl-gold/20 bg-ipl-gold/[0.04] hover:bg-ipl-gold/[0.08] hover:border-ipl-gold/40 transition-all flex flex-col items-center justify-center text-center"
+                                    className="group w-full sm:w-[200px] p-4 rounded-2xl border border-ipl-gold/20 bg-ipl-gold/[0.04] hover:bg-ipl-gold/[0.08] hover:border-ipl-gold/40 transition-all flex flex-col items-center justify-center text-center"
                                 >
-                                    <Zap size={28} className="text-ipl-gold mb-3" />
-                                    <h3 className="font-display font-bold text-white text-lg mb-1">Create Room</h3>
-                                    <p className="text-white/30 text-sm">Start a new auction session</p>
+                                    <Zap size={24} className="text-ipl-gold mb-2" />
+                                    <h3 className="font-display font-bold text-white text-base mb-1">Create Room</h3>
+                                    <p className="text-white/30 text-xs">Start a new auction session</p>
                                 </button>
                                 <button onClick={() => setStep('join')}
-                                    className="group w-full sm:w-[260px] p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all flex flex-col items-center justify-center text-center"
+                                    className="group w-full sm:w-[200px] p-4 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all flex flex-col items-center justify-center text-center"
                                 >
-                                    <Users size={28} className="text-white/50 mb-3" />
-                                    <h3 className="font-display font-bold text-white text-lg mb-1">Join Room</h3>
-                                    <p className="text-white/30 text-sm">Enter a room code to join</p>
+                                    <Users size={24} className="text-white/50 mb-2" />
+                                    <h3 className="font-display font-bold text-white text-base mb-1">Join Room</h3>
+                                    <p className="text-white/30 text-xs">Enter a room code to join</p>
                                 </button>
                             </div>
 
@@ -260,14 +260,14 @@ export default function Landing() {
                                         <button
                                             onClick={step === 'create' ? handleCreate : handleJoin}
                                             disabled={!name.trim() || !selectedTeam || (step === 'join' && !joinCode.trim())}
-                                            className="w-full font-display font-bold tracking-wider uppercase py-4 rounded-xl transition-all disabled:opacity-20 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
+                                            className="w-full font-display font-bold tracking-wider uppercase py-3 rounded-xl transition-all disabled:opacity-20 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base"
                                             style={{
                                                 background: selectedTeamData ? `linear-gradient(135deg, ${selectedTeamData.primaryColor}, ${selectedTeamData.secondaryColor || selectedTeamData.primaryColor})` : 'linear-gradient(135deg, #d4af37, #b8941f)',
                                                 color: selectedTeamData?.shortName === 'GT' ? '#fff' : '#0a0e1a',
                                                 boxShadow: selectedTeamData ? `0 4px 20px ${selectedTeamData.primaryColor}40` : '0 4px 20px rgba(212,175,55,0.3)'
                                             }}
                                         >
-                                            {step === 'create' ? 'Create Room' : 'Join Room'} <ArrowRight size={20} />
+                                            {step === 'create' ? 'Create Room' : 'Join Room'} <ArrowRight size={18} />
                                         </button>
                                     </div>
 

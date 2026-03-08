@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuction } from '../context/AuctionContext';
 import { motion } from 'framer-motion';
 import { Wallet, Users, Crown, Bot } from 'lucide-react';
+import { TeamLogo } from '../utils/flags';
 
 function formatPrice(lakh) {
     if (lakh >= 100) return `₹${(lakh / 100).toFixed(2)} Cr`;
@@ -12,12 +13,9 @@ export default function Teams() {
     const { teams, myTeam } = useAuction();
 
     return (
-        <div className="min-h-screen pt-20 px-4 pb-8">
+        <div className="min-h-screen pt-28 px-4 pb-8">
             <div className="max-w-7xl mx-auto">
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
-                    <h1 className="font-display text-3xl font-black gradient-text mb-2">ALL TEAMS</h1>
-                    <p className="text-white/40">View team squads and remaining purse</p>
-                </motion.div>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {teams.map((team, i) => (
@@ -37,14 +35,7 @@ export default function Teams() {
                             <div className="relative z-10">
                                 {/* Team Header */}
                                 <div className="flex items-center gap-4 mb-4">
-                                    <img
-                                        src={team.logo}
-                                        alt={team.shortName}
-                                        className="w-16 h-16 object-contain"
-                                        onError={e => {
-                                            e.target.parentElement.innerHTML = `<div class="w-16 h-16 rounded-full flex items-center justify-center font-display font-bold text-lg" style="background:${team.primaryColor}20;color:${team.primaryColor}">${team.shortName}</div>` + e.target.parentElement.innerHTML.slice(e.target.outerHTML.length);
-                                        }}
-                                    />
+                                    <TeamLogo team={team} size={64} />
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
                                             <h3 className="font-display text-lg font-bold" style={{ color: team.primaryColor }}>{team.name}</h3>
@@ -94,9 +85,9 @@ export default function Teams() {
                                                         <div>
                                                             <span className="text-white font-medium">{p.name}</span>
                                                             <span className={`ml-2 px-1.5 py-0.5 rounded text-[9px] font-bold ${p.specialism === 'BATTER' ? 'badge-batter' :
-                                                                    p.specialism === 'BOWLER' ? 'badge-bowler' :
-                                                                        p.specialism === 'ALL-ROUNDER' ? 'badge-allrounder' :
-                                                                            'badge-wicketkeeper'
+                                                                p.specialism === 'BOWLER' ? 'badge-bowler' :
+                                                                    p.specialism === 'ALL-ROUNDER' ? 'badge-allrounder' :
+                                                                        'badge-wicketkeeper'
                                                                 }`}>
                                                                 {p.specialism === 'ALL-ROUNDER' ? 'AR' : p.specialism === 'WICKETKEEPER' ? 'WK' : p.specialism.slice(0, 3)}
                                                             </span>
