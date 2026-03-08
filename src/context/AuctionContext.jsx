@@ -36,9 +36,9 @@ export function AuctionProvider({ children }) {
     const [allTeamsData, setAllTeamsData] = useState([]);
 
     useEffect(() => {
-        const s = io(window.location.hostname === 'localhost' ? 'http://localhost:5000' : '/', {
-            transports: ['websocket', 'polling']
-        });
+        const url = window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin;
+        const s = io(url, { transports: ['websocket', 'polling'] });
+
         socketRef.current = s;
         setSocket(s);
 
@@ -134,8 +134,8 @@ export function AuctionProvider({ children }) {
         });
 
         // Fetch static data
-        fetch('/api/players').then(r => r.json()).then(setAllPlayers).catch(() => { });
-        fetch('/api/teams').then(r => r.json()).then(setAllTeamsData).catch(() => { });
+        fetch(`${url}/api/players`).then(r => r.json()).then(setAllPlayers).catch(() => { });
+        fetch(`${url}/api/teams`).then(r => r.json()).then(setAllTeamsData).catch(() => { });
 
         return () => s.disconnect();
     }, []);
